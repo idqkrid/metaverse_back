@@ -24,10 +24,10 @@ module.exports = (sequelize, DataTypes) => {
     db.post.hasMany(db.comment); // 어떤 게시글에 댓글이 여러개 있을수 있다.
     db.post.hasMany(db.image); // 어떤 게시글에 이미지를 여러개 가질 수 있다.
 
-    db.post.belongsToMany(db.hashtag, { through: "PostHashtag" }); // 여러 게시글에 여러 해시태그가 속해 있다.
-    db.post.belongsToMany(db.user, { through: "Like", as: "Likers" });
+    db.post.belongsToMany(db.hashtag, { through: "postHashtag" }); // 여러 게시글에 여러 해시태그가 속해 있다.
+    db.post.belongsToMany(db.user, { through: "like", as: "likers" });
 
-    db.post.belongsTo(db.post, { as: "Retweet" }); // 리트윗
+    db.post.belongsTo(db.post, { as: "retweet" }); // 리트윗
   };
 
   return post;

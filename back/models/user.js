@@ -20,23 +20,23 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      charset: "utf8",
-      collate: "utf8_general_ci", // 한글 저장
+      charset: "utf8mb4",
+      collate: "utf8mb4_general_ci", // 이모티콘 저장
     }
   );
   user.associate = (db) => {
     db.user.hasMany(db.post); // 사람이 포스트를 여러개 가질수 있다.
     db.user.hasMany(db.comment); // 작성자는 댓글을 여러개 쓸수 있다
-    db.user.belongsToMany(db.post, { through: "Like", as: "Liked" }); // 좋아요
+    db.user.belongsToMany(db.post, { through: "like", as: "liked" }); // 좋아요
 
     db.user.belongsToMany(db.user, {
-      through: "Follow",
-      as: "Followers",
+      through: "follow",
+      as: "followers",
       foreignKey: "followingId",
     });
     db.user.belongsToMany(db.user, {
-      through: "Follow",
-      as: "Followings",
+      through: "follow",
+      as: "followings",
       foreignKey: "followerId",
     });
   };
