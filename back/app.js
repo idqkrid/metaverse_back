@@ -67,8 +67,8 @@ app.use((err, req, res, next) => {
 })
 
 
-const server = app.listen(3065, () => {
-  console.log('서버 실행중..')
+const server = app.listen(80, () => {
+  console.log("서버 실행중..");
 });
 
 webSocket(server, app);
