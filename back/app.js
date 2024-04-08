@@ -12,7 +12,7 @@ const updateRouter = require('./routes/upost')
 const mailRouter = require('./routes/mail')
 const metaRouter = require('./routes/meta');
 
-const db = require('./models');
+// const db = require('./models');
 const passportConfig = require('./passport');
 const passport = require('passport')
 const dotenv = require('dotenv');
@@ -22,12 +22,12 @@ const webSocket = require('./socket')
 dotenv.config();
 const app = express();
 
-db.sequelize
-  .sync({ focus: false })
-  .then(() => {
-    console.log("db 연결 성공");
-  })
-  .catch(console.error);
+// db.sequelize
+//   .sync({ focus: false })
+//   .then(() => {
+//     console.log("db 연결 성공");
+//   })
+//   .catch(console.error);
 passportConfig();
 
 app.use(cors({
