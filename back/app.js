@@ -22,9 +22,10 @@ const webSocket = require('./socket')
 dotenv.config();
 const app = express();
 
-db.sequelize.sync({focus: false})
+db.sequelize
+  .sync({ focus: true })
   .then(() => {
-    console.log('db 연결 성공')
+    console.log("db 연결 성공");
   })
   .catch(console.error);
 passportConfig();
